@@ -1,7 +1,10 @@
 # Plot 4 - Mixed
+
+# Download and unzip file if it's not exists
+source("prepare_file.R")
+
 library(data.table)
 
-file.name = file.path('..', 'household_power_consumption.txt')
 dat = fread(file.name, na.strings = c('?'))
 
 # subset for the given dates
@@ -29,18 +32,22 @@ png(output.file, width=480, height=480)
 par(mfrow=c(2,2))
 
 # 1st plot
-plot(dat$Global_active_power ~ dates, xlab=NA, ylab = "Global Active Power", type="l")
+plot(dat$Global_active_power ~ dates, xlab=NA, ylab="Global Active Power", type="l")
 
 # 2nd plot 
 plot(dat$Voltage ~ dates, xlab="datetime", type="l")
 
 # 3rd plot
-plot(dat$Sub_metering_1 ~ dates, type="n", xlab=NA, ylab = "Energy sub metering")
-points(dat$Sub_metering_1 ~ dates, type="l", col="black")
-points(dat$Sub_metering_2 ~ dates, type="l", col="red")
-points(dat$Sub_metering_3 ~ dates, type="l", col="blue")
+plot(dat$Sub_metering_1 ~ dates, type="n", xlab=NA, ylab="Energy sub metering")
+lines(dat$Sub_metering_1 ~ dates, type="l", col="black")
+lines(dat$Sub_metering_2 ~ dates, type="l", col="red")
+lines(dat$Sub_metering_3 ~ dates, type="l", col="blue")
 
-legend("topright", legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), col=c("black", "red", "blue"), lwd=1, lty=c(1,1,1))
+legend("topright", 
+        legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), 
+        col=c("black", "red", "blue"), 
+        lwd=1, 
+        lty=c(1,1,1))
 
 # 4th plot
 plot(dat$Global_reactive_power ~ dates, type="l", xlab="datetime")

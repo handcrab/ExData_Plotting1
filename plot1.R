@@ -1,7 +1,10 @@
 # Plot 1 - Global Active Power
+
+# Download and unzip file if it's not exists
+source("prepare_file.R")
+
 library(data.table)
 
-file.name = file.path('..', 'household_power_consumption.txt')
 dat = fread(file.name, na.strings = c('?'))
 
 # subset for the given dates
@@ -18,6 +21,11 @@ rm(num.dat)
 # create the plot
 output.file = file.path('figure', 'plot1.png')
 png(output.file, width=480, height=480)
-hist(dat$Global_active_power, col='red', xlab='Global Active Power (kilowatts)', main ='Global Active Power')
+
+hist(dat$Global_active_power, 
+      col='red', 
+      xlab='Global Active Power (kilowatts)', 
+      main ='Global Active Power') # breaks=12
+# dev.copy(png, output.file, width=480, height=480)
 dev.off()
 
