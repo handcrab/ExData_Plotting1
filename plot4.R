@@ -35,7 +35,7 @@ par(mfrow=c(2,2))
 plot(dat$Global_active_power ~ dates, xlab=NA, ylab="Global Active Power", type="l")
 
 # 2nd plot 
-plot(dat$Voltage ~ dates, xlab="datetime", type="l")
+plot(dat$Voltage ~ dates, xlab="datetime", ylab = "Voltage", type="l")
 
 # 3rd plot
 plot(dat$Sub_metering_1 ~ dates, type="n", xlab=NA, ylab="Energy sub metering")
@@ -50,7 +50,7 @@ legend("topright",
         lty=c(1,1,1))
 
 # 4th plot
-plot(dat$Global_reactive_power ~ dates, type="l", xlab="datetime")
+plot(dat$Global_reactive_power ~ dates, type="l", xlab="datetime",  ylab = "Global_reactive_power")
 
 dev.off()
 

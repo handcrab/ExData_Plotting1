@@ -1,4 +1,5 @@
 # Download and unzip file if it's not exists
+
 file.url = "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
 file.name = "household_power_consumption.txt"
 
